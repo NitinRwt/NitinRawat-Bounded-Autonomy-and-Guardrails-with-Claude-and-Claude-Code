@@ -1,0 +1,15 @@
+
+> claude-multiagent-code-review-starter@1.0.0 dev
+> tsx src/main.ts octocat Hello-World 1
+
+Missing required environment configuration:
+  - ANTHROPIC_MODEL
+  - GITHUB_TOKEN
+Also set either ANTHROPIC_API_KEY or AWS_ACCESS_KEY_ID + AWS_SECRET_ACCESS_KEY + AWS_REGION.
+npm error Lifecycle script `dev` failed with error:
+npm error code 1
+npm error path C:\Users\soura\Downloads\NitinRawat-Bounded-Autonomy-and-Guardrails-with-Claude-and-Claude-Code\project\starter
+npm error workspace claude-multiagent-code-review-starter@1.0.0
+npm error location C:\Users\soura\Downloads\NitinRawat-Bounded-Autonomy-and-Guardrails-with-Claude-and-Claude-Code\project\starter
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c tsx src/main.ts octocat Hello-World 1

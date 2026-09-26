@@ -1,0 +1,152 @@
+{
+  "pullRequest": {
+    "owner": "octocat",
+    "repo": "Hello-World",
+    "number": 1
+  },
+  "fileReviews": [
+    {
+      "file": "README",
+      "codeQuality": {
+        "file": "README",
+        "issues": [
+          {
+            "line": 2,
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Command and description are concatenated without spacing or formatting, making the text difficult to read and parse",
+            "suggestion": "Add proper spacing or formatting between commands and descriptions. For example: '$ mkdir ~/Hello-World    # Creates a directory for your project called \"Hello-World\" in your user directory' or use separate lines for commands and descriptions"
+          },
+          {
+            "line": 3,
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Command and description are concatenated without spacing or formatting, making the text difficult to read and parse",
+            "suggestion": "Add proper spacing or formatting between commands and descriptions. For example: '$ cd ~/Hello-World    # Changes the current working directory to your newly created directory' or use separate lines for commands and descriptions"
+          },
+          {
+            "line": 4,
+            "severity": "medium",
+            "category": "maintainability",
+            "description": "Command and description are concatenated without spacing or formatting, making the text difficult to read and parse",
+            "suggestion": "Add proper spacing or formatting between commands and descriptions. For example: '$ git init    # Sets up the necessary Git files' or use separate lines for commands and descriptions"
+          },
+          {
+            "line": 5,
+            "severity": "low",
+            "category": "security",
+            "description": "Hardcoded absolute path '/Users/your_user_directory/' exposes system directory structure and may confuse users on non-macOS systems",
+            "suggestion": "Use a platform-agnostic placeholder like '/path/to/your/home/Hello-World/.git/' or simply '~/Hello-World/.git/' to avoid revealing specific OS paths and improve cross-platform clarity"
+          },
+          {
+            "line": 6,
+            "severity": "low",
+            "category": "maintainability",
+            "description": "Missing newline at end of file (file ends with no line terminator after 'touch README')",
+            "suggestion": "Add a newline character at the end of the file to follow POSIX text file standards and prevent issues with certain text processing tools"
+          },
+          {
+            "line": 1,
+            "severity": "low",
+            "category": "best-practice",
+            "description": "README lacks proper structure and formatting - no title, sections, or markdown formatting for a documentation file",
+            "suggestion": "Structure the README with proper markdown formatting: use '# Hello World' as a title, create sections like '## Getting Started', use code blocks (```) for command sequences, and add descriptive text explaining the project's purpose"
+          }
+        ],
+        "overallScore": 65,
+        "summary": "The README file has several maintainability issues primarily related to formatting and readability. Commands and their descriptions are concatenated without proper spacing, making the documentation difficult to read. The file lacks proper structure typical of README files (no markdown formatting, sections, or clear organization). Minor security concern with hardcoded macOS-specific paths that could be more generic. The file also lacks a trailing newline. While these issues don't affect code execution, they significantly impact documentation quality and user experience. Recommend reformatting with proper markdown syntax, separated commands and descriptions, and cross-platform path examples."
+      },
+      "testCoverage": {
+        "file": "README",
+        "hasTests": false,
+        "testFiles": [],
+        "untestedPaths": [],
+        "coverageEstimate": 100,
+        "summary": "This is a documentation file containing Git setup instructions. Documentation files do not require traditional unit tests as they contain no executable code. The content should be validated through documentation review processes, spell-checking, and technical accuracy verification rather than automated testing. If this were part of a larger system, integration tests could verify that following these instructions produces the expected results, but such tests would be external to this file."
+      },
+      "refactorings": {
+        "file": "README",
+        "suggestions": [
+          {
+            "type": "simplify",
+            "location": "Lines 2-4",
+            "impact": "high",
+            "description": "Add whitespace separation between commands and their descriptions to improve readability. The current format concatenates commands directly with their explanations, making it difficult to parse visually.",
+            "before": "$ mkdir ~/Hello-WorldCreates a directory for your project called \"Hello-World\" in your user directory\n$ cd ~/Hello-WorldChanges the current working directory to your newly created directory\n$ git initSets up the necessary Git files",
+            "after": "$ mkdir ~/Hello-World\nCreates a directory for your project called \"Hello-World\" in your user directory\n\n$ cd ~/Hello-World\nChanges the current working directory to your newly created directory\n\n$ git init\nSets up the necessary Git files",
+            "benefits": "Separating commands from descriptions improves scannability and makes the tutorial easier to follow. Users can quickly identify commands to execute versus explanatory text."
+          },
+          {
+            "type": "modernize",
+            "location": "Lines 2-6",
+            "impact": "medium",
+            "description": "Use markdown code formatting to properly distinguish commands from prose. README files should leverage markdown syntax for better rendering on GitHub and other platforms.",
+            "before": "$ mkdir ~/Hello-WorldCreates a directory for your project called \"Hello-World\" in your user directory\n$ cd ~/Hello-WorldChanges the current working directory to your newly created directory\n$ git initSets up the necessary Git files\nInitialized empty Git repository in /Users/your_user_directory/Hello-World/.git/\n$ touch README",
+            "after": "## Getting Started\n\nCreate a directory for your project called \"Hello-World\" in your user directory:\n```bash\n$ mkdir ~/Hello-World\n$ cd ~/Hello-World\n```\n\nInitialize a Git repository:\n```bash\n$ git init\n```\nOutput: `Initialized empty Git repository in /Users/your_user_directory/Hello-World/.git/`\n\nCreate a README file:\n```bash\n$ touch README\n```",
+            "benefits": "Markdown formatting provides syntax highlighting, clear visual separation, and better rendering on GitHub. Code blocks can be easily copied, and the structure becomes self-documenting."
+          },
+          {
+            "type": "simplify",
+            "location": "Line 5",
+            "impact": "low",
+            "description": "Distinguish command output from commands by removing the '$' prompt from output lines. Line 5 shows git output but should be formatted differently from user-entered commands.",
+            "before": "$ git initSets up the necessary Git files\nInitialized empty Git repository in /Users/your_user_directory/Hello-World/.git/",
+            "after": "$ git init\nSets up the necessary Git files\n\n> Initialized empty Git repository in /Users/your_user_directory/Hello-World/.git/",
+            "benefits": "Clear distinction between commands (prefixed with $) and output (prefixed with > or no prefix) helps users understand what they should type versus what they should expect to see."
+          }
+        ],
+        "summary": "The README file contains tutorial content that is poorly formatted with commands and descriptions concatenated without whitespace. The main issues are: (1) no separation between shell commands and their descriptions, making the text difficult to read, (2) lack of markdown formatting that would provide syntax highlighting and better structure, and (3) inconsistent presentation of command output. Applying proper markdown with code blocks, separating commands from prose, and structuring the content with headers would transform this from a plain text dump into a professional, scannable tutorial."
+      }
+    }
+  ],
+  "summary": {
+    "totalFiles": 1,
+    "overallScore": 65,
+    "criticalIssues": 0,
+    "highPriorityTests": 0,
+    "refactoringOpportunities": 3
+  },
+  "recommendations": [
+    {
+      "priority": "high",
+      "category": "Documentation Formatting",
+      "description": "Separate commands from their descriptions by adding proper whitespace and line breaks. The current format concatenates shell commands directly with explanatory text, making it extremely difficult to read and follow.",
+      "files": [
+        "README"
+      ]
+    },
+    {
+      "priority": "high",
+      "category": "Markdown Best Practices",
+      "description": "Convert the plain text README to use proper markdown formatting with code blocks, headers, and sections. This will improve readability on GitHub and provide syntax highlighting for commands.",
+      "files": [
+        "README"
+      ]
+    },
+    {
+      "priority": "medium",
+      "category": "Cross-Platform Compatibility",
+      "description": "Replace macOS-specific paths (e.g., '/Users/your_user_directory/') with platform-agnostic placeholders or use the tilde notation ('~/') to ensure documentation works for users on all operating systems.",
+      "files": [
+        "README"
+      ]
+    },
+    {
+      "priority": "low",
+      "category": "File Standards",
+      "description": "Add a trailing newline at the end of the file to comply with POSIX standards and prevent potential issues with text processing tools.",
+      "files": [
+        "README"
+      ]
+    }
+  ],
+  "metadata": {
+    "analyzedAt": "2026-09-03T00:00:00Z",
+    "duration": 8500,
+    "agentVersions": {
+      "code-quality-analyzer": "1.0.0",
+      "test-coverage-analyzer": "1.0.0",
+      "refactoring-suggester": "1.0.0"
+    }
+  }
+}

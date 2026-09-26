@@ -1,0 +1,17 @@
+
+> claude-multiagent-code-review-starter@1.0.0 test
+> vitest run --config ./vitest.config.ts --run tests/main.test.ts --reporter=verbose
+
+
+[1m[46m RUN [49m[22m [36mv4.0.17 [39m[90mC:/Users/soura/Downloads/NitinRawat-Bounded-Autonomy-and-Guardrails-with-Claude-and-Claude-Code/project/starter[39m
+
+ [32m✓[39m tests/main.test.ts[2m > [22mCLI environment validation[2m > [22mexits with a clear configuration error when GITHUB_TOKEN is missing[33m 2390[2mms[22m[39m
+ [32m✓[39m tests/main.test.ts[2m > [22mCLI environment validation[2m > [22mexits with a clear configuration error when ANTHROPIC_MODEL is missing[33m 2530[2mms[22m[39m
+ [32m✓[39m tests/main.test.ts[2m > [22mCLI environment validation[2m > [22mexits with a usage message when required CLI arguments are missing[33m 3524[2mms[22m[39m
+ [32m✓[39m tests/main.test.ts[2m > [22mCLI environment validation[2m > [22mexits with an error when pr-number is not a positive integer[33m 3017[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m4 passed[39m[22m[90m (4)[39m
+[2m   Start at [22m 10:15:38
+[2m   Duration [22m 11.81s[2m (transform 45ms, setup 0ms, import 67ms, tests 11.46s, environment 0ms)[22m
+
