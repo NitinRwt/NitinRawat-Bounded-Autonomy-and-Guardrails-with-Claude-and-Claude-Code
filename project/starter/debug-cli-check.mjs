@@ -3,8 +3,11 @@ import fs from 'node:fs';
 
 const env = { ...process.env };
 delete env.GITHUB_TOKEN;
-env.ANTHROPIC_API_KEY = 'voc-212389923721938354816146ab4faad6fc621.04464674';
-env.ANTHROPIC_MODEL = 'claude-sonnet-4-5-20250929';
+
+if (!env.ANTHROPIC_API_KEY) {
+  env.ANTHROPIC_API_KEY = 'test-key-not-used';
+}
+env.ANTHROPIC_MODEL = env.ANTHROPIC_MODEL || 'claude-sonnet-4-5-20250929';
 
 const result = { status: null, stderr: '', stdout: '', error: null };
 

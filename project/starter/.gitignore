@@ -1,6 +1,12 @@
+.env
+.env.*
+!.env.example
 node_modules/
 dist/
-.env
+debug-cli-check.json
+debug-cli-check.*.json
+runlog.txt
+test-output.txt
 *.log
 logs/
 .DS_Store

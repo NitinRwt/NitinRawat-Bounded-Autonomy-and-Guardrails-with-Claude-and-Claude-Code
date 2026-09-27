@@ -71,17 +71,28 @@ async function main() {
     const jsonPath = path.join(outDir, `${base}.json`);
     const mdPath = path.join(outDir, `${base}.md`);
     const htmlPath = path.join(outDir, `${base}.html`);
+    const latestJsonPath = path.join(outDir, 'report.json');
+    const latestMdPath = path.join(outDir, 'report.md');
+    const latestHtmlPath = path.join(outDir, 'report.html');
+
+    const jsonReport = reportGenerator.generateJSONReport(report);
+    const markdownReport = reportGenerator.generateMarkdownReport(report);
+    const htmlReport = reportGenerator.generateHTMLReport(report);
 
     await Promise.all([
-      fs.writeFile(jsonPath, reportGenerator.generateJSONReport(report), 'utf-8'),
-      fs.writeFile(mdPath, reportGenerator.generateMarkdownReport(report), 'utf-8'),
-      fs.writeFile(htmlPath, reportGenerator.generateHTMLReport(report), 'utf-8'),
+      fs.writeFile(jsonPath, jsonReport, 'utf-8'),
+      fs.writeFile(mdPath, markdownReport, 'utf-8'),
+      fs.writeFile(htmlPath, htmlReport, 'utf-8'),
+      fs.writeFile(latestJsonPath, jsonReport, 'utf-8'),
+      fs.writeFile(latestMdPath, markdownReport, 'utf-8'),
+      fs.writeFile(latestHtmlPath, htmlReport, 'utf-8'),
     ]);
 
     logger.info('Review complete. Reports saved:');
     logger.info(`  JSON:     ${jsonPath}`);
     logger.info(`  Markdown: ${mdPath}`);
     logger.info(`  HTML:     ${htmlPath}`);
+    logger.info(`  Latest aliases: ${latestJsonPath}, ${latestMdPath}, ${latestHtmlPath}`);
     logger.info(`  Overall score: ${report.summary.overallScore}/100`);
   } catch (error) {
     if (error instanceof ReviewError) {
